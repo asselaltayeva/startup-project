@@ -1,0 +1,81 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Gambetta:wght@500&display=swap");
+
+
+@import "tailwindcss";
+
+@theme {
+  --font-heading: "Gambetta", serif;
+  --font-body: "Poppins", sans-serif;
+
+  --color-white: #ffffff;
+  --color-green-300: #b4f5b4;
+
+  --text-heading-size: 128px;
+  --text-heading-weight: 500;
+  --text-heading-letter-spacing: -0.06em;
+  --text-heading-line-height: 1;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+  background-color: #ffffff;
+  color: #111111;
+  @apply antialiased;
+}
+
+
+
+/* Headline Style */
+.heading {
+  font-family: var(--font-heading);
+  font-size: var(--text-heading-size);
+  font-weight: var(--text-heading-weight);
+  letter-spacing: var(--text-heading-letter-spacing);
+  line-height: var(--text-heading-line-height);
+  color: var(--color-white);
+}
+
+/* Optional green accent block */
+.accent-block {
+  background-color: var(--color-green-300);
+  @apply rounded-md px-4 py-2 text-sm font-medium text-black;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .heading {
+    font-size: 64px;
+  }
+}
+
+.yc-bg {
+  background-color: #f4e8d1;
+}
+
+.bg-gradient-to-yc {
+  background-image: linear-gradient(to bottom, #dcdcd4, #f4e8d1), url('/assets/Noise.webp');
+  background-blend-mode: overlay;
+  background-size: cover;
+  background-position: center;
+}
+
+.bg-gradient-from-yc {
+  background-image: linear-gradient(to top, #dcdcd4, #f4e8d1), url('/assets/Noise.webp');
+  background-blend-mode: overlay;
+  background-size: cover;
+  background-position: center;
+}
+
+
+
+.transition-properties{
+  @apply transition-all duration-150;
+}
+
+.primary-glow {
+  filter: drop-shadow(0px 0px 2px #a3ff00); 
+}
+
