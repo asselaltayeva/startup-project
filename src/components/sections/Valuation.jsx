@@ -48,7 +48,7 @@ function Valuation() {
           }}
         >
           Everything You Need to Know <br />
-          About <span className="italic text-lime-600 primary-glow">Funding Rounds</span>
+          About <span className="italic text-lime-600 primary-glow">Valuation</span>
         </h2>
 
         {/* Carousel Framed Box */}

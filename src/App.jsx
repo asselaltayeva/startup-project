@@ -10,6 +10,7 @@ import Main from "./components/sections/Main";
 import Funding from "./components/sections/Funding";
 import MilestoneIntro from "./components/sections/MilestoneIntro";
 import MilestoneSec from "./components/sections/MilestoneSec";
+import FAQs from "./components/sections/FAQs/FAQs";
 import Valuation from "./components/sections/Valuation";
 import Footer from "./components/sections/Footer";
 
@@ -24,6 +25,7 @@ function App() {
     <Main>
       <MilestoneIntro />
       <Funding />
+      <FAQs />
       <MilestoneSec />
       <Valuation />
       <Footer />
