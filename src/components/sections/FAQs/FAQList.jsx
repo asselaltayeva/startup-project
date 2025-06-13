@@ -1,9 +1,9 @@
-import React from 'react'
-import FAQ from './FAQ'
+import React from 'react';
+import FAQ from './FAQ';
 
 function FAQList({ questions, activeQuestion, handleQuestionClick }) {
   return (
-    <ul className="mx-auto max-w-4xl space-y-8 px-6">
+    <ul className="mx-auto max-w-5xl space-y-6 px-6 md:px-12">
       {questions.map((question) => (
         <FAQ
           key={question.id}
@@ -13,7 +13,7 @@ function FAQList({ questions, activeQuestion, handleQuestionClick }) {
         />
       ))}
     </ul>
-  )
+  );
 }
 
-export default FAQList
+export default FAQList;

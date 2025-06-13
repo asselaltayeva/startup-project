@@ -1,22 +1,22 @@
 import React from 'react'
 import ArrowRightLine from '../icons/ArrowRightLine'
 import ArrowRight from '../icons/ArrowRight'
-import startup from '../../assets/startup.png'
+import startup1 from '../../assets/startup.png'
+import TextPressure from './TextPressure';
+
 
 function Hero() {
   return (
     <section className="relative h-screen bg-gradient-to-b from-black/70 via-black/40 to-transparent text-white font-body">
-      {/* Background Image */}
       <div className="absolute inset-0 z-0 h-full w-full">
         <img
-          src={startup}
+          src={startup1}
           alt="Startup workspace"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover "
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/10"></div>
-      </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/10 shadow-[0_4px_30px_#0E1D1C]"></div>
+        </div>
 
-      {/* Centered Content */}
       <div className="relative z-10 m-auto max-w-[90rem] px-6 md:px-12 lg:px-24 flex flex-col justify-center h-full">
         <div>
           <h1
@@ -31,9 +31,10 @@ function Hero() {
           >
             <span className="text-white">Smart Funding for</span>
             <br />
-            <span className="italic" style={{ color: 'var(--color-lime-400)' }}>
+            <span className="italic text-lime-300">
               Bold Startups
-            </span>
+              </span>
+
             <br />
             <span className="text-white justify-end">
               <span className="italic">Resource Hub</span> 
@@ -46,24 +47,23 @@ function Hero() {
 
 
 
-          <div className="mt-6 flex gap-4">
-        <button className="group mt-6 flex items-center gap-4 h-[37px] px-4 text-xl font-medium bg-lime-400 text-black rounded-2xl hover:bg-lime-300 transition">
-        <span>Learn More</span>
-        <div className="relative flex items-center">
-        <ArrowRightLine
-        alt="Arrow right line"
-        className="stroke-black transition-all -mr-3 w-0 opacity-0 group-hover:w-4 group-hover:opacity-100 ease-in-out"
-        style={{strokeWidth:5}}
-        />
-        <ArrowRight
-        alt="Arrow right"
-        className="stroke-black inline w-[24px] -ml-[4px]"
-        style={{strokeWidth: 5}}
-        
-      />
-    </div>
-  </button>
-</div>
+          <div className="mt-6 flex gap-2">
+            <button className="group flex items-center gap-3 h-10 px-4 text-base font-medium bg-lime-300 text-[#0E1D1C] rounded-2xl hover:bg-lime-200 transition-colors duration-300 ease-in-out shadow-sm hover:shadow-md focus:outline-none focus:ring-2 focus:ring-lime-300/50">
+            <span>Learn More</span>
+            <div className="relative flex items-center overflow-hidden">
+              <ArrowRightLine
+              alt="Arrow right line"
+              className="stroke-[#0E1D1C] absolute left-0 w-4 opacity-0 translate-x-[-8px] group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300 ease-in-out"
+              style={{ strokeWidth: 4 }}
+              />
+              <ArrowRight
+              alt="Arrow right"
+              className="stroke-[#0E1D1C] relative w-[20px] ml-1 transition-all duration-300 ease-in-out"
+              style={{ strokeWidth: 4 }}
+              />
+              </div>
+              </button>
+              </div>
         </div>
       </div>
     </section>

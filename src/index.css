@@ -51,25 +51,10 @@ body {
   }
 }
 
-.yc-bg {
-  background-color: #f4e8d1;
+.bg-gradient-to-b {
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(3, 21, 32, 0.3) 10%, rgba(5, 30, 28, 0.6) 100%, rgba(14, 29, 30, 0.4) 0%);  pointer-events: none;
 }
-
-.bg-gradient-to-yc {
-  background-image: linear-gradient(to bottom, #dcdcd4, #f4e8d1), url('/assets/Noise.webp');
-  background-blend-mode: overlay;
-  background-size: cover;
-  background-position: center;
-}
-
-.bg-gradient-from-yc {
-  background-image: linear-gradient(to top, #dcdcd4, #f4e8d1), url('/assets/Noise.webp');
-  background-blend-mode: overlay;
-  background-size: cover;
-  background-position: center;
-}
-
-
 
 .transition-properties{
   @apply transition-all duration-150;
@@ -79,3 +64,51 @@ body {
   filter: drop-shadow(0px 0px 2px #a3ff00); 
 }
 
+.scrollbar-glow::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollbar-glow::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-glow::-webkit-scrollbar-thumb {
+  background: rgba(34, 197, 94, 0.2);
+  border: 1.5px solid #22c55e;
+  border-radius: 9999px;
+  animation: pulseGlow 2.5s infinite alternate;
+  box-shadow: 0 0 6px #22c55e88;
+  cursor: pointer;
+}
+
+.scrollbar-glow::-webkit-scrollbar-thumb:hover {
+  background: rgba(34, 197, 94, 0.4);
+  box-shadow: 0 0 10px #22c55ecc;
+}
+
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 4px #22c55e77;
+  }
+  100% {
+    box-shadow: 0 0 12px #22c55eee;
+  }
+}
+
+.scrollbar-glow {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(34, 197, 94, 0.3) transparent;
+}
+
+.smooth-scroll {
+  scroll-behavior: smooth;
+  scroll-snap-type: y proximity;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
