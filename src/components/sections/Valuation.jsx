@@ -1,170 +1,94 @@
-'use client';
-import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import DCF from '../../assets/DCF.jpeg';
-import WACC from '../../assets/WACC.jpeg';
-import VC from '../../assets/VC.jpeg';
+import React, { useState } from "react";
+import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
 
 const valuationMethods = [
   {
-    title: 'Discounted Cash Flow (DCF)',
+    title: "Discounted Cash Flow (DCF)", 
     description:
-      'Calculates the present value of expected future cash flows, adjusted for risk and time. Ideal for startups with predictable revenue streams.',
-    image: DCF,
-    example: 'Estimate cash flows over 5 years, discount at your cost of capital.',
+      "Calculates the present value of expected future cash flows, adjusted for risk and time.", 
+    example: "Estimate cash flows over 5 years, discount at your cost of capital.", 
+    value: "dcf",
   },
   {
-    title: 'Comparable Company Analysis',
+    title: "Comparable Company Analysis",
     description:
-      'Values a startup by comparing it to similar public companies or recent transactions. Uses multiples like EV/Revenue or EV/EBITDA.',
-    image: WACC,
-    example: 'If similar companies trade at 5x revenue, multiply your startup’s revenue by 5.',
+      "Values a startup by comparing it to similar companies using multiples like EV/Revenue.",
+    example:
+      "If similar companies trade at 5x revenue, multiply your startup’s revenue by 5.",
+    value: "comp",
   },
   {
-    title: 'Venture Capital Method',
+    title: "Venture Capital Method",
     description:
-      'Estimates exit value based on projected earnings and desired ROI, then discounts back to present value.',
-    image: VC,
-    example: 'Project exit value in 5 years and discount by target return rate.',
+      "Estimates exit value based on projected earnings and desired ROI, then discounts to present value.",
+    example:
+      "Project exit value in 5 years and discount by your target return rate.",
+    value: "vc",
   },
   {
-    title: 'Scorecard Valuation Method',
+    title: "Scorecard Valuation Method",
     description:
-      'Adjusts average valuation of comparable startups based on qualitative factors like team, product, market size.',
-    image: DCF,
-    example: 'Start with average valuation, then adjust scores (+/-) for strengths and weaknesses.',
+      "Starts with average valuation, adjusting for team, product, market size, and other factors.",
+    example: "Adjust +10% for a strong team, -5% for a small market size.",
+    value: "scorecard",
   },
 ];
 
-export default function Valuation() {
+export default function ValuationChooser() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const sectionRefs = useRef([]);
-
-  const handleIntersect = useCallback(
-    (entries) => {
-      let mostVisible = { index: -1, ratio: 0 };
-      entries.forEach((entry) => {
-        const index = Number(entry.target.dataset.index);
-        if (entry.intersectionRatio > mostVisible.ratio) {
-          mostVisible = { index, ratio: entry.intersectionRatio };
-        }
-      });
-      if (mostVisible.index !== -1 && mostVisible.index !== activeIndex) {
-        setActiveIndex(mostVisible.index);
-      }
-    },
-    [activeIndex]
-  );
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(handleIntersect, {
-      root: null,
-      threshold: Array.from({ length: 11 }, (_, i) => i * 0.1),
-    });
-
-    sectionRefs.current.forEach((section) => {
-      if (section) observer.observe(section);
-    });
-
-    return () => {
-      sectionRefs.current.forEach((section) => {
-        if (section) observer.unobserve(section);
-      });
-      observer.disconnect();
-    };
-  }, [handleIntersect]);
+  const active = valuationMethods[activeIndex];
 
   return (
-    <div className="relative bg-[#0E1D1C] text-white w-full min-h-screen px-4 py-25 md:px-12">
-      <h2 className="text-3xl md:text-4xl font-semibold mb-6 text-center max-w-3xl mx-auto">
-        Understanding Valuation Methods
-      </h2>
-      <p className="text-lg text-white/70 mb-12 text-center max-w-3xl mx-auto">
-        Explore common startup valuation methods with interactive examples. Scroll to reveal matching visuals.
-      </p>
+    <section className="py-16 px-6 md:px-50 bg-[#0E1D1C] text-gray-50 min-h-[600px]">
+      <div className="max-w-5xl mx-auto text-center mb-12">
+        <h2 className="text-3xl md:text-4xl font-semibold mb-4">
+          Understanding Valuation Methods
+        </h2>
+        <p className="text-lg text-gray-300 max-w-3xl mx-auto">
+          Explore how investors assess startup value using common financial and market-based techniques.
+        </p>
+      </div>
 
-      <div className="flex flex-col lg:flex-row w-full max-w-7xl mx-auto gap-10">
-       
-       {/* Sticky Visual Panel */}
-        <div className="hidden lg:flex lg:flex-col lg:w-1/2 sticky top-35 h-[30rem] justify-center items-center">
+
+      <div className="flex justify-center flex-wrap gap-3 mb-10">
+        {valuationMethods.map((method, index) => (
+          <button
+            key={method.value}
+            onClick={() => setActiveIndex(index)}
+            className={`px-5 py-2 rounded-full text-sm font-medium transition 
+              ${
+                index === activeIndex
+                  ? "bg-lime-500 text-black"
+                  : "bg-gray-800 text-gray-300 hover:bg-gray-700"
+              }`}
+          >
+            {method.title}
+          </button>
+        ))}
+      </div>
+
+      {/* Animated Content */}
+      <div className="relative max-w-3xl mx-auto h-[280px]">
+        <LayoutGroup>
           <AnimatePresence mode="wait">
             <motion.div
-              key={valuationMethods[activeIndex].image}
-              initial={{ opacity: 0}}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.2}}
-              className="w-full flex flex-col items-center"
-              aria-live="polite"
+              key={active.value}
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -40 }}
+              transition={{ type: "spring", stiffness: 120, damping: 20 }}
+              className="absolute inset-0 p-8 rounded-2xl border border-gray-800 shadow-xl backdrop-blur-md bg-[#1a2928]/90"
             >
-              <motion.img
-                src={valuationMethods[activeIndex].image}
-                alt={valuationMethods[activeIndex].title}
-                className="w-full max-w-md max-h-[20rem] md:max-h-[28rem] object-contain"
-              />
-              <motion.div
-                className="mt-4 text-center text-lime-300 text-lg font-medium"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1}}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.3 }}
-              >
-                {valuationMethods[activeIndex].title}
-              </motion.div>
+              <h3 className="text-xl md:text-2xl font-semibold mb-4">{active.title}</h3>
+              <p className="text-gray-300 mb-6 leading-relaxed">{active.description}</p>
+              <div className="text-sm text-gray-400 bg-gray-900/50 border border-gray-700 px-4 py-3 rounded-lg font-mono">
+                Example: {active.example}
+              </div>
             </motion.div>
           </AnimatePresence>
-        </div>
-
-        {/* Scrollable Content */}
-        <div className="lg:w-1/2 flex flex-col gap-12 overflow-y-auto no-scrollbar pt-8 pb-20">
-          {valuationMethods.map(({ title, description, example }, idx) => (
-            <motion.section
-              key={title}
-              ref={(el) => (sectionRefs.current[idx] = el)}
-              data-index={idx}
-              className={`rounded-xl p-6 border transition-all duration-500 snap-start scroll-mt-24 ${
-                activeIndex === idx
-                  ? 'border-lime-400 bg-[#142624] shadow-[0_0_15px_#a3e63540]'
-                  : 'border-transparent bg-[#0f1f1e]'
-              }`}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: idx * 0.3 }}
-              viewport={{ once: false }}
-            >
-              <h3 className="text-2xl font-semibold mb-3 text-lime-300">{title}</h3>
-              <p className="text-white/90 mb-4 leading-relaxed">{description}</p>
-              <div className="bg-[#0f3129] p-4 rounded-lg border border-lime-600 max-w-md">
-                <strong className="text-lime-400 block mb-1">Example:</strong>
-                <p className="text-white/80 italic">{example}</p>
-              </div>
-            </motion.section>
-          ))}
-        </div>
+        </LayoutGroup>
       </div>
-
-      {/* Mobile Image Fallback */}
-      <div className="lg:hidden mt-10 w-full max-w-md mx-auto" aria-live="polite">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={valuationMethods[activeIndex].image}
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.95 }}
-            transition={{ duration: 0.5 }}
-          >
-            <motion.img
-              src={valuationMethods[activeIndex].image}
-              alt={valuationMethods[activeIndex].title}
-              className="w-full max-w-md max-h-[20rem] md:max-h-[28rem] object-contain"
-              loading="lazy"
-            />
-            <div className="mt-2 text-center text-lime-300 font-medium">
-              {valuationMethods[activeIndex].title}
-            </div>
-          </motion.div>
-        </AnimatePresence>
-      </div>
-    </div>
+    </section>
   );
 }
 

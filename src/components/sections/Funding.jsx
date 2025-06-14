@@ -146,7 +146,7 @@ export default function Funding() {
               key={index}
               onClick={() => openModal(index)}
               spotlightColor="rgba(255, 255, 255, 0.07)"
-              className="cursor-pointer border border-white/10 bg-[#1a2928] hover:ring-2 hover:ring-lime-200 hover:scale-[1.01] active:scale-[0.98] transition-transform"
+              className="cursor-pointer border border-gray-900 bg-[#1a2928] hover:ring-2 hover:ring-lime-200 hover:scale-[1.01] active:scale-[0.98] transition-transform"
             >
               <div className="flex items-center gap-3 mb-4">
                 {round.icon}

@@ -5,6 +5,7 @@ import startup1 from '../../assets/startup.png'
 import TextPressure from './TextPressure';
 
 
+
 function Hero() {
   return (
     <section className="relative h-screen bg-gradient-to-b from-black/70 via-black/40 to-transparent text-white font-body">
@@ -45,25 +46,6 @@ function Hero() {
           Explore a curated hub of resources to raise capital, understand startup valuation, and discover accelerator programs worldwide all in one place.
           </p>
 
-
-
-          <div className="mt-6 flex gap-2">
-            <button className="group flex items-center gap-3 h-10 px-4 text-base font-medium bg-lime-300 text-[#0E1D1C] rounded-2xl hover:bg-lime-200 transition-colors duration-300 ease-in-out shadow-sm hover:shadow-md focus:outline-none focus:ring-2 focus:ring-lime-300/50">
-            <span>Learn More</span>
-            <div className="relative flex items-center overflow-hidden">
-              <ArrowRightLine
-              alt="Arrow right line"
-              className="stroke-[#0E1D1C] absolute left-0 w-4 opacity-0 translate-x-[-8px] group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300 ease-in-out"
-              style={{ strokeWidth: 4 }}
-              />
-              <ArrowRight
-              alt="Arrow right"
-              className="stroke-[#0E1D1C] relative w-[20px] ml-1 transition-all duration-300 ease-in-out"
-              style={{ strokeWidth: 4 }}
-              />
-              </div>
-              </button>
-              </div>
         </div>
       </div>
     </section>
