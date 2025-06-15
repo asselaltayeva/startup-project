@@ -34,41 +34,44 @@ export default function ResourceHub() {
   }, []);
 
   return (
-    <section className="pt-26 py-16 px-6 md:px-12 bg-[#0E1D1C] text-white">
+    <section className="pt-26 py-16 px-6 md:px-12 bg-[#0E1D1C] text-gray-50">
       <div className="max-w-5xl mx-auto text-center">
         <h2 className="text-3xl md:text-4xl font-semibold mb-4">Resource Hub</h2>
-        <p className="text-lg text-gray-500 mb-12 max-w-3xl mx-auto">
+        <p className="text-lg text-gray-50/70 mb-12 max-w-3xl mx-auto">
           Find helpful content on everything from valuation methods to cap tables.
         </p>
       </div>
+  
+  
+      <div className="mx-auto max-w-5xl rounded-2xl overflow-hidden border border-gray-800 shadow-xl flex flex-col md:flex-row h-[75vh]">
+      <aside className="md:w-1/3 pr-6 h-full p-4  bg-gradient-to-r from-[#1a2928] via-[#19302f] to-[#1a2928]">
+      <button
+        onClick={() => setPaletteOpen(true)}
+        className="w-full mb-4 px-4 py-2 flex items-center gap-2 text-left text-base font-medium bg-[#0E1D1C] text-gray-100 border border-gray-800 rounded-full transition-all duration-200"
+      >
+        <Search className="w-4 h-4 text-gray-300" />
+        Search resources...
+      </button>
 
-      <div className="mx-auto max-w-6xl rounded-2xl overflow-hidden border border-gray-800 shadow-xl flex flex-col md:flex-row h-[75vh]">
-        <aside className="md:w-1/3 overflow-y-auto border-r border-gray-900 bg-[#122322] p-6 space-y-4">
+      <nav className="flex flex-col gap-2">
+        {topics.map(({ name }) => (
           <button
-            onClick={() => setPaletteOpen(true)}
-            className="w-full mb-4 p-2 flex items-center gap-2 text-left text-base bg-[#1a2928] text-gray-100 border border-gray-800 rounded-md hover:bg-[#223534] transition"
+            key={name}
+            onClick={() => setSelectedTopic(name)}
+            className={`text-left px-4 py-2 text-base font-medium rounded-full transition-all duration-200
+              ${selectedTopic === name ? 'text-lime-300' : 'text-gray-300'}
+            `}
           >
-            <Search className="w-4 h-4 text-gray-400" />
-            Search resources...
+            {name}
           </button>
-
-          {topics.map(({ name }) => (
-            <button
-              key={name}
-              onClick={() => setSelectedTopic(name)}
-              className={`w-full text-left text-base mb-2 py-1 px-2 rounded transition ${
-                selectedTopic === name ? 'text-lime-300' : 'text-gray-100'
-              }`}
-            >
-              {name}
-            </button>
-          ))}
-        </aside>
-
-        <main className="md:w-2/3 flex flex-col bg-[#1a2928] p-6">
+        ))}
+      </nav>
+  </aside>
+  
+        <main className="md:w-2/3 flex flex-col bg-[#1a2928]/90 p-6">
           <ResourceList topic={selectedTopic} resources={resources} />
         </main>
-
+  
         <CommandPalette
           isOpen={paletteOpen}
           onClose={() => setPaletteOpen(false)}
@@ -77,4 +80,4 @@ export default function ResourceHub() {
       </div>
     </section>
   );
-}
+}  

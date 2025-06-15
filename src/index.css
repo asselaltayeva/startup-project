@@ -2,9 +2,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Gambetta:wght@500&display=swap");
 
 
+
 @import "tailwindcss";
 
 @theme {
+                                                                                         
   --font-heading: "Gambetta", serif;
   --font-body: "Poppins", sans-serif;
 

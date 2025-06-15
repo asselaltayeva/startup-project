@@ -87,13 +87,13 @@ export default function ResourceList({ topic, resources }) {
         {visibleResources.map((res) => (
           <li
             key={res.id}
-            className="bg-[#1c2e2b] p-5 rounded-lg shadow-sm hover:shadow-md transition-shadow"
+            className=" p-5  hover:shadow-sm transition-shadow"
           >
             <a
-              href={res.url}
+              href={res.url} 
               target="_blank"
               rel="noopener noreferrer"
-              className="block text-lg font-medium text-white hover:text-white/70"
+              className="block text-lg font-medium text-white hover:text-white/80"
             >
               {res.title}
             </a>

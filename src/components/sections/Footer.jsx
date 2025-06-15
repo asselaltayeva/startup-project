@@ -5,7 +5,6 @@ function Footer() {
     <footer className="bg-[#2F4E4D] text-white font-body py-12 px-6 md:px-12 lg:px-24">
       <div className="max-w-[90rem] mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
 
-        {/* Left side: Heading */}
         <div className="w-full md:w-auto flex justify-center md:justify-start">
           <h2
             className="tracking-tight font-semibold whitespace-nowrap text-center md:text-left"

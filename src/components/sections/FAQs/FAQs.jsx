@@ -199,70 +199,40 @@ function FAQs() {
 
   return (
     <>
-      <style>{`
-        .scrollbar-glow::-webkit-scrollbar {
-          width: 6px;
-        }
-        .scrollbar-glow::-webkit-scrollbar-track {
-          background: transparent;
-        }
-        .scrollbar-glow::-webkit-scrollbar-thumb {
-          background: rgba(34, 197, 94, 0.2);
-          border: 1.5px solid #22c55e;
-          border-radius: 9999px;
-          animation: pulseGlow 2.5s infinite alternate;
-          box-shadow: 0 0 6px #22c55e88;
-          cursor: pointer;
-        }
-        .scrollbar-glow::-webkit-scrollbar-thumb:hover {
-          background: rgba(34, 197, 94, 0.4);
-          box-shadow: 0 0 10px #22c55ecc;
-        }
-        @keyframes pulseGlow {
-          0% {
-            box-shadow: 0 0 4px #22c55e77;
-          }
-          100% {
-            box-shadow: 0 0 12px #22c55eee;
-          }
-        }
-        .scrollbar-glow {
-          scrollbar-width: thin;
-          scrollbar-color: rgba(34, 197, 94, 0.3) transparent;
-        }
-      `}</style>
-
-<section className="py-16 px-6 md:px-50 bg-[#0E1D1C] text-white">
-  <div className="max-w-3xl mx-auto text-center">
-    <h2 className="text-3xl md:text-4xl font-semibold mb-4">
-      Frequently Asked Questions
-    </h2>
-    <p className="text-lg text-white/70 mb-12 max-w-3xl mx-auto">
-      Answers to common questions about startup funding and investment.
-    </p>
+      <section className="pt-26 py-16 px-6 md:px-12 bg-[#0E1D1C] text-gray-50">
+        <div className="max-w-5xl mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-semibold mb-4">
+            Frequently Asked Questions
+          </h2>
+          <p className="text-lg text-gray-50/70 mb-12 max-w-3xl mx-auto">
+            Answers to common questions about startup funding and investment.
+          </p>
         </div>
-
+  
+        {/* Categories */}
         <ul className="flex flex-wrap justify-center gap-4 mb-12">
           {categories.map((cat) => (
             <li key={cat}>
-           <button
-  onClick={() => handleCategoryClick(cat)}
-  className={`px-8 py-2 text-lg font-medium transition-all ease-in-out rounded-full
-    ${
-      cat === category
-        ? 'bg-lime-300 text-[#0E1D1C] border border-lime-200 shadow-sm'
-        : 'text-white cursor-pointer border border-white/10 bg-[#1a2928] hover:ring-2 hover:ring-lime-200 hover:scale-[1.01] active:scale-[0.98] transition-transform'
-    }`}
->
-  {cat}
-</button>
+              <button
+                onClick={() => handleCategoryClick(cat)}
+                className={`px-8 py-2 text-base font-medium transition-all ease-in-out rounded-full
+                  ${
+                      cat === category
+                        ? 'bg-lime-300 text-[#0E1D1C] border border-lime-200 shadow-sm'
+                        : 'text-gray-50 border border-gray-50/10 bg-[#1a2928] hover:ring-2 hover:ring-lime-200 hover:scale-[1.01] active:scale-[0.98]'
+                   }`}
+              >
+                {cat}
+              </button>
             </li>
           ))}
         </ul>
-
-        <div className="space-y-4 px-4 md:px-0 w-full">
+  
+        {/* FAQ List */}
+        <div className="max-w-5xl px-4 md:px-0 w-full space-y-4 mx-auto">
           {filteredQuestions.map(({ id, question, answer, seeMore }) => {
             const isActive = activeQuestion === id;
+  
             return (
               <div
                 key={id}
@@ -270,53 +240,51 @@ function FAQs() {
               >
                 <button
                   onClick={() => handleQuestionClick(id)}
-                  className="flex justify-between items-center w-full text-left font-medium text-lime-300 text-lg"
                   aria-expanded={isActive}
                   aria-controls={`faq-answer-${id}`}
+                  className="flex justify-between items-center w-full text-left font-medium text-lime-300 text-lg"
                 >
-                  <span className="text-white">{question}</span>
+                  <span className="text-gray-50">{question}</span>
                   {isActive ? (
-                    <ChevronUp className="w-6 h-6 text-lime-400" />
-                  ) : (
-                    <ChevronDown className="w-6 h-6 text-lime-400" />
-                  )}
+                      <ChevronUp className="w-6 h-6 text-lime-400" />
+                   ) : (
+                      <ChevronDown className="w-6 h-6 text-lime-400" />
+                   )}
+  
                 </button>
-
+  
                 <AnimatePresence initial={false}>
                   {isActive && (
-                    <motion.div
-                      id={`faq-answer-${id}`}
-                      key="content"
-                      initial="collapsed"
-                      animate="open"
-                      exit="collapsed"
-                      variants={{
-                        open: { opacity: 1, height: 'auto' },
-                        collapsed: { opacity: 0, height: 0 },
-                      }}
-                      transition={{ duration: 0.1, ease: 'easeInOut' }}
-                      className="overflow-hidden mt-3 text-white/90 text-[17px] leading-7"
-                      style={{ wordBreak: "break-word" }} 
-                    >
-                      <p>{answer}</p>
-                      {seeMore && seeMore.length > 0 && (
-                        <ul className="mt-2 list-disc list-inside text-lime-300 text-xs space-y-2">
-                          {seeMore.map(({ text, url }, idx) => (
-                            <li key={idx}>
-                              <a
-                                href={url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="hover:underline hover:text-lime-300"
-                              >
-                                {text}
-                              </a>
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                    </motion.div>
-                  )}
+                      <motion.div
+                        id={`faq-answer-${id}`}
+                        key="content"
+                        initial="collapsed"
+                        animate="open"
+                        exit="collapsed"
+                        variants={{ 
+                          open: {opacity: 1, height:'auto'}, 
+                          collapsed: {opacity: 0, height: 0},
+                        }}
+                        transition={{duration: 0.1, ease:'easeInOut'}} 
+                        className="overflow-hidden mt-3 text-gray-50/90 text-[17px] leading-7 break-words">
+                        <p>{answer}</p>
+                        {seeMore && seeMore.length > 0 && (
+                          <ul className="mt-2 list-disc list-inside text-lime-300 text-xs space-y-2">
+                            {seeMore.map(({ text, url }, idx) => (
+                              <li key={idx}>
+                               <a
+                                  href={url}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="hover:underline hover:text-lime-300">
+                                  {text}
+                               </a>
+                              </li>
+                             ))}
+                          </ul>
+                        )}
+                      </motion.div>
+                   )}
                 </AnimatePresence>
               </div>
             );
@@ -325,6 +293,7 @@ function FAQs() {
       </section>
     </>
   );
-}
-
-export default FAQs;
+  }
+  
+  export default FAQs;
+  

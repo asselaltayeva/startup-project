@@ -1,9 +1,5 @@
 import React from 'react'
-import ArrowRightLine from '../icons/ArrowRightLine'
-import ArrowRight from '../icons/ArrowRight'
 import startup1 from '../../assets/startup.png'
-import TextPressure from './TextPressure';
-
 
 
 function Hero() {

@@ -21,7 +21,7 @@ function Navigation() {
   ];
 
   const navClasses = scrolled
-  ? 'fixed top-4 inset-x-0 max-w-[1300px] mx-auto bg-gradient-to-r from-[#2F4E4D]/30 to-[#1E3B3A]/20 backdrop-blur-lg border border-white/20 rounded-full px-4 py-2 shadow-lg ring-1 ring-white/10 transition-all duration-300 ease-in-out z-50'
+  ? 'fixed top-4 inset-x-0 max-w-[900px] mx-auto bg-gradient-to-r from-[#2F4E4D]/30 to-[#1E3B3A]/20 backdrop-blur-lg border border-white/20 rounded-full px-4 py-2 shadow-lg ring-1 ring-white/10 transition-all duration-300 ease-in-out z-50'
   : 'absolute top-[30px] left-[50px] right-[50px] bg-[#2F4E4D]/0 backdrop-blur-sm border border-white/10 rounded-full px-4 py-2 shadow-md ring-1 ring-white/5 transition-all duration-300 ease-in-out z-50';
 
 
@@ -29,9 +29,8 @@ function Navigation() {
   return (
     <nav className={navClasses}>
       <div className="flex items-center justify-between">
-        <Logo className="w-[152px] h-[43px]" />
+        <Logo className="w-[90px] h-[40px]" />
 
-        {/* Desktop Nav */}
         <ul className="hidden md:flex flex-1 justify-center space-x-6 text-lg font-medium">
           {navItems.map((item) => (
             <li key={item.name}>

@@ -61,18 +61,15 @@ export default function CommandPalette({ resources, isOpen, onClose }) {
     }
   }, [isOpen]);
 
-  // Detect clicks outside the command palette
   useEffect(() => {
     function handleClickOutside(e) {
       if (containerRef.current && !containerRef.current.contains(e.target)) {
         onClose();
       }
     }
-
     if (isOpen) {
       document.addEventListener('mousedown', handleClickOutside);
     }
-
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
@@ -81,7 +78,7 @@ export default function CommandPalette({ resources, isOpen, onClose }) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
+    <div className="fixed inset-0 bg-black/20 flex items-center justify-center z-50">
       <FocusTrap
         active={isOpen}
         focusTrapOptions={{ initialFocus: '#command-palette-input' }}
@@ -91,7 +88,7 @@ export default function CommandPalette({ resources, isOpen, onClose }) {
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0.8, opacity: 0 }}
-          className="relative bg-[#1a2928] rounded-xl w-full max-w-xl p-[18px]"
+          className="relative w-full max-w-xl bg-gradient-to-r from-[#27413e] via-[#2a4b47] to-[#223734] p-4 rounded-2xl border border-gray-900 shadow-xl"
         >
           <div className="relative">
             <input
@@ -102,27 +99,30 @@ export default function CommandPalette({ resources, isOpen, onClose }) {
               onChange={(e) => setQuery(e.target.value)}
               onKeyDown={onKeyDown}
               placeholder="Search resources..."
-              className="w-full pr-12 p-3 rounded-md bg-[#0E1D1C] text-white placeholder-gray-500 outline-none border border-gray-800 text-base"
+              className="w-full px-4 py-2 rounded-full bg-[#0E1D1C] text-white placeholder-gray-500 outline-none border border-gray-800 text-base"
             />
             <button
               onClick={onClose}
-              className="absolute top-3 right-3 text-gray-400 hover:text-white transition"
+              className="absolute top-2.5 right-3 text-white hover:text-white transition"
               aria-label="Close command palette"
             >
               <X size={20} />
             </button>
           </div>
 
-          <ul className="max-h-64 overflow-y-auto mt-2 text-base">
+          <ul
+            ref={listRef}
+            className="max-h-64 overflow-y-auto mt-3 flex flex-col gap-2"
+          >
             {filtered.map((res, i) => (
               <li
                 key={res.id}
                 data-selected={i === selectedIndex}
-                className={`p-2 cursor-pointer rounded-md select-none ${
-                  i === selectedIndex
-                    ? 'bg-lime-300 text-[#0E1D1C]'
-                    : 'text-white'
-                }`}
+                className={`px-4 py-2 rounded-full cursor-pointer select-none text-base font-medium transition-all duration-150
+                  ${i === selectedIndex
+                    ? 'bg-lime-300 text-[#0F1B1A]'
+                    : 'text-white hover:text-white'}
+                `}
                 onMouseEnter={() => setSelectedIndex(i)}
                 onClick={() => {
                   window.open(res.url, '_blank');
@@ -133,7 +133,7 @@ export default function CommandPalette({ resources, isOpen, onClose }) {
               </li>
             ))}
             {filtered.length === 0 && (
-              <li className="p-2 text-gray-500">No results found.</li>
+              <li className="px-4 py-2 text-gray-500 text-base">No results found.</li>
             )}
           </ul>
         </motion.div>
