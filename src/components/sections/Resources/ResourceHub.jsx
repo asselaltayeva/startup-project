@@ -4,9 +4,9 @@ import CommandPalette from './CommandPalette';
 import ResourceList from './ResourceList';
 
 const resources = [
-  { id: 1, title: 'Understanding Pre-Money Valuation', url: 'https://example.com/pre-money', topics: ['Valuation Basics', 'Startup Funding'], type: 'Article' },
-  { id: 2, title: 'Cap Table Explained', url: 'https://example.com/cap-table', topics: ['Equity', 'Startup Funding'], type: 'Video' },
-  { id: 3, title: 'How to Use the Berkus Method', url: 'https://example.com/berkus-method', topics: ['Valuation Methods'], type: 'Article' },
+  { id: 1, title: 'Understanding Pre-Money Valuation', url: 'https://www.investopedia.com/terms/p/premoneyvaluation.asp', topics: ['Valuation Basics', 'Startup Funding'], type: 'Article' },
+  { id: 2, title: 'Cap Table Explained', url: 'https://carta.com/learn/startups/equity-management/cap-table/', topics: ['Equity', 'Startup Funding'], type: 'Video' },
+  { id: 3, title: 'How to Use the Berkus Method', url: 'https://www.fullstack.com.au/startups-valuation-using-the-berkus-method/', topics: ['Valuation Methods'], type: 'Article' },
 ];
 
 const topics = [
@@ -34,7 +34,7 @@ export default function ResourceHub() {
   }, []);
 
   return (
-    <section className="pt-26 py-16 px-6 md:px-12 bg-[#0E1D1C] text-gray-50">
+    <section id="resources" className="pt-26 py-16 px-6 md:px-12 bg-[#0E1D1C] text-gray-50">
       <div className="max-w-5xl mx-auto text-center">
         <h2 className="text-3xl md:text-4xl font-semibold mb-4">Resource Hub</h2>
         <p className="text-lg text-gray-50/70 mb-12 max-w-3xl mx-auto">

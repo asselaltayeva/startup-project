@@ -26,9 +26,9 @@ function Footer() {
         {/* Navigation Links in a column, right-aligned */}
         <ul className="flex flex-col gap-4 text-sm md:text-base w-full md:w-auto text-right">
           <li><a href="#" className="hover:text-lime-400 transition block">Startups</a></li>
-          <li><a href="#" className="hover:text-lime-400 transition block">Funding Rounds</a></li>
-          <li><a href="#" className="hover:text-lime-400 transition block">Valuation</a></li>
-          <li><a href="#" className="hover:text-lime-400 transition block">Resource Hub</a></li>
+          <li><a href="#funding" className="hover:text-lime-400 transition block">Funding Rounds</a></li>
+          <li><a href="#valuation" className="hover:text-lime-400 transition block">Valuation</a></li>
+          <li><a href="#resources" className="hover:text-lime-400 transition block">Resource Hub</a></li>
           <li><a href="#" className="hover:text-lime-400 transition block">All rights Reserved</a></li>
         </ul>
 

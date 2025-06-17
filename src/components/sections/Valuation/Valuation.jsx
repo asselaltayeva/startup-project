@@ -7,7 +7,7 @@ export default function Valuation() {
   const active = valuationMethods[activeIndex];
 
   return (
-    <section className="pt-26 py-16 px-6 md:px-12 bg-[#0E1D1C] text-white">
+    <section id="valuation" className="pt-26 py-16 px-6 md:px-12 bg-[#0E1D1C] text-white">
       <div className="max-w-5xl mx-auto text-center">
         <h2 className="text-3xl md:text-4xl font-semibold mb-4">
           Everything You Need to Know About Valuation
@@ -17,7 +17,7 @@ export default function Valuation() {
         </p>
       </div>
 
-      <div className="max-w-5xl mx-auto flex flex-col md:flex-row gap-5">
+      <div className="max-w-5xl mx-auto flex flex-col md:flex-row gap-2">
         {/* Sidebar */}
         <aside className="md:w-1/3 pr-6">
           <div className="h-full p-4 rounded-2xl">

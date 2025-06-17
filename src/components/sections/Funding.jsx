@@ -18,7 +18,7 @@ const fundingRounds = [
     description: 'Idea stage, minimal product. Funds often come from founders, friends, or small angels.',
     details:
       'This round typically involves a small amount of capital to cover product development or research. Investors are betting on the team more than the traction.',
-    video: 'https://www.youtube.com/embed/9u_0C1M8nYg',
+    video: 'https://www.youtube.com/embed/zBUhQPPS9AY?si=jtp19-QWke4XLJhQ',
     sources: [
       {
         label: 'Y Combinator on Pre-Seed',
@@ -32,7 +32,7 @@ const fundingRounds = [
     description: 'MVP is live. Funding to validate product-market fit and grow early users.',
     details:
       'Seed capital helps develop the product further and acquire early customers. Angel investors and early-stage VCs often participate.',
-    video: 'https://www.youtube.com/embed/TJbE4aH3ihc',
+    video: 'https://www.youtube.com/embed/5GXx5c53c5s?si=HKMS4OXSbsFQX-Tn',
     sources: [
       {
         label: 'Seed Funding Explained',
@@ -46,7 +46,7 @@ const fundingRounds = [
     description: 'Product traction is proven. Capital used to scale core team and operations.',
     details:
       'Investors look for strong metrics and early signs of scalability. Funds go to hiring, marketing, and refining the product.',
-    video: 'https://www.youtube.com/embed/BpAw4ClwRTo',
+    video: "https://www.youtube.com/embed/rPNk8LNz4Us?si=dX0b730msTUxCzRO",
     sources: [
       {
         label: 'What is Series A?',
@@ -60,7 +60,7 @@ const fundingRounds = [
     description: 'Business model is working. Funds go toward expansion, marketing, and hiring.',
     details:
       'The company is past the initial growth phase and focuses on scaling across new markets or verticals. Larger VCs may lead.',
-    video: 'https://www.youtube.com/embed/zWhWCEdZ5Lk',
+    video: 'https://www.youtube.com/embed/78Zxx3o55PM?si=zp-qrm4dx26ZM-S1',
     sources: [
       {
         label: 'Understanding Series B',
@@ -74,7 +74,7 @@ const fundingRounds = [
     description: 'Late-stage growth. Investors seek mature operations and large-scale opportunity.',
     details:
       'Rounds C, D, E, etc., are used for aggressive expansion, acquisitions, or prep for IPO. Investors expect clear paths to exit.',
-    video: 'https://www.youtube.com/embed/7T7a-3IMX3Q',
+    video: "https://www.youtube.com/embed/G76hW51wRT0?si=yrT8Q3aGyIe1IXh5",
     sources: [
       {
         label: 'Late-Stage Funding Overview',
@@ -88,7 +88,7 @@ const fundingRounds = [
     description: 'Going public. The company offers shares to the public market.',
     details:
       'An IPO allows a company to raise capital from public investors. This stage involves regulatory scrutiny, underwriters, and a liquidity event for investors.',
-    video: 'https://www.youtube.com/embed/hf7dcGJyO2c',
+    video: 'https://www.youtube.com/embed/78Zxx3o55PM?si=zp-qrm4dx26ZM-S1',
     sources: [
       {
         label: 'What is an IPO?',
@@ -132,7 +132,7 @@ export default function Funding() {
   };
 
   return (
-    <section className="pt-26 py-16 px-6 md:px-12 bg-[#0E1D1C] text-white">
+    <section id="funding" className="pt-26 py-16 px-6 md:px-12 bg-[#0E1D1C] text-white">
       <div className="max-w-5xl mx-auto text-center">
         <h2 className="text-3xl md:text-4xl font-semibold mb-4">
           Everything You Need to Know About Funding Rounds

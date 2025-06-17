@@ -12,6 +12,7 @@ import FAQs from "./components/sections/FAQs/FAQs";
 import Valuation from "./components/sections/Valuation/Valuation";
 import ResourceHub from "./components/sections/Resources/ResourceHub";
 import Footer from "./components/sections/Footer";
+import Apply from "./components/sections/Apply";
 
 function App() {
   return ( 
@@ -25,6 +26,7 @@ function App() {
       <Funding />
       <Valuation />
       <ResourceHub />
+      <Apply />
       <FAQs />
       <Footer />
     </Main>
