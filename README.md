@@ -2,6 +2,11 @@
 
 An interactive, educational web platform designed to help users understand the fundamentals of startup funding and valuation. Built with **React**, **Tailwind CSS**, and **Framer Motion**, this tool provides accessible, visually engaging content for aspiring entrepreneurs, students, and early-stage investors.
 
+### 📘 Full Report
+
+[View the report on Notion](https://asselaltay.notion.site/ebd/217beecc724c80d8b4d7d5ca532a18ba)
+
+
 ---
 
 ## 🎯 Project Objective
